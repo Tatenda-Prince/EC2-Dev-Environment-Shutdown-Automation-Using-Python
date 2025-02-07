@@ -256,7 +256,7 @@ if __name__ == "__main__":
 
 6.2.After creating the script and running it, you should be able to see three new Development EC2 Instances created in the EC2 dashboard. If you select either one of the EC2 Instances and click on the “Tags” tab, you should notice a key:value pair tag — “Environment: Dev”.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/ade8e961f7cf384de5ee584b6d15c117ae907a17/img/Screenshot%202025-02-07%20173617.png)
 
 
 ## Step 6: Verify Lambda Function and EventBridge functionality
