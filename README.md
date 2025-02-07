@@ -187,10 +187,97 @@ Select “Cron-based schedule” and use the cron expression as seen below, then
 4.4.Continue to the “Review and create schedule”, then click “Create schedule”.
 You should now be able to see the new Schedule just created in EventBridge.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/f83c5b822d1b6c8e483df02f590808ddaa270caa/img/Screenshot%202025-02-07%20173458.png)
 
 
 Now that we’ve scheduled the execution of our Lambda function, we can proceed to Step 5 — Automating the launching of Dev EC2 Instances.
+
+
+## Step 6: Automating Dev EC2 Instances launch
+
+6.1.Before we can test our Lambda Function and EventBridge operational functionality, we can use the source code below to create a Python script to automate the launch of three new EC2 Instances with tags “Environment: Dev”.
+For our test to be successful, the three Development Instances created should stop once the Lambda function runs according to the schedule set by EventBridge.
+
+```python
+import boto3
+
+def launch_ec2_instance():
+    # Initialize the EC2 client
+    ec2 = boto3.client('ec2')
+    
+    # Specify the details for the EC2 instance
+    instance_params = {
+        'ImageId': 'ami-085ad6ae776d8f09c',  # Replace with your desired AMI ID
+        'InstanceType': 't2.micro',          # Replace with your desired instance type
+        'MinCount': 3,
+        'MaxCount': 3,
+        'TagSpecifications': [
+            {
+                'ResourceType': 'instance',
+                'Tags': [
+                    {'Key': 'Environment', 'Value': 'Dev'},
+                    {'Key': 'Name', 'Value': 'MyDevInstance'},
+                    # Add more tags if needed
+                ]
+            }
+        ],
+        # Optional: Specify a key pair for SSH access
+        'KeyName': 'ashleyKeypair',     # Replace with your key pair name
+        # Optional: Specify a security group
+        'SecurityGroupIds': ['sg-03930ca1462264838'],  # Replace with your security group ID
+        # Optional: Specify a subnet
+        'SubnetId': 'subnet-0a220b62a7bfcf628',       # Replace with your subnet ID
+    }
+    
+    try:
+        # Launch the instance
+        response = ec2.run_instances(**instance_params)
+        
+        # Extract the instance ID
+        instance_id = response['Instances'][0]['InstanceId']
+        print(f"Launched EC2 instance with ID: {instance_id}")
+        
+        # Optionally, wait for the instance to be in the 'running' state
+        waiter = ec2.get_waiter('instance_running')
+        waiter.wait(InstanceIds=[instance_id])
+        print(f"Instance {instance_id} is now running.")
+        
+        return instance_id
+    except Exception as e:
+        print(f"Error launching EC2 instance: {e}")
+        raise e
+
+if __name__ == "__main__":
+    launch_ec2_instance()
+
+
+```
+
+
+6.2.After creating the script and running it, you should be able to see three new Development EC2 Instances created in the EC2 dashboard. If you select either one of the EC2 Instances and click on the “Tags” tab, you should notice a key:value pair tag — “Environment: Dev”.
+
+![image_alt]()
+
+
+## Step 6: Verify Lambda Function and EventBridge functionality
+
+6.1.Navigate back to EventBridge and edit the Schedule created earlier. We need to make changes to the next scheduled time so we don’t have to wait until 17:45pm to verify if the Instances were stopped.
+To accomplish this effectively, change the “Schedule pattern” occurrence to “One-time schedule”, set the “Date and time” to the current date and the time to 3–5 minutes in the future to limit wait time.
+
+![image_alt]()
+
+
+6.2.Verify that the instance is stopped and you receive a notification.
+
+
+
+![image_alt]()
+
+
+
+
+
+
 
 
 
