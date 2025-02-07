@@ -97,6 +97,72 @@ json
 ![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/235b79137302b284942be6b9b597b365a679a3f1/img/Screenshot%202025-02-07%20172248.png)
 
 
+## Step 3: Write the Lambda Function Code
+
+3.1.This AWS Lambda function is designed to stop EC2 instances that are tagged with "Environment=Dev" and are currently running. It uses the EC2 and SNS clients from the boto3 library to find instances with this tag and state. If any matching instances are found, the function stops them and sends a notification via SNS with the list of stopped instances. If no such instances are found, it simply prints a message indicating that no instances were stopped. The function returns a status code and a completion message upon execution.
+
+
+Replace the default code with the following Python script:
+
+
+```python
+import boto3
+
+def lambda_handler(event, context):
+    ec2 = boto3.client('ec2')
+    sns = boto3.client('sns')
+    
+    # Specify the tag key and value
+    tag_key = 'Environment'
+    tag_value = 'Dev'
+    
+    # Find instances with the specified tag
+    response = ec2.describe_instances(
+        Filters=[
+            {'Name': f'tag:{tag_key}', 'Values': [tag_value]},
+            {'Name': 'instance-state-name', 'Values': ['running']}
+        ]
+    )
+    
+    instances_to_stop = []
+    
+    for reservation in response['Reservations']:
+        for instance in reservation['Instances']:
+            instances_to_stop.append(instance['InstanceId'])
+    
+    if instances_to_stop:
+        # Stop the instances
+        ec2.stop_instances(InstanceIds=instances_to_stop)
+        print(f"Stopped instances: {instances_to_stop}")
+        
+        # Send notification
+        sns_topic_arn = 'arn:aws:sns:us-east-1:664418964175:InstanceStopNotification'
+        message = f"The following instances with tag {tag_key}={tag_value} were stopped: {instances_to_stop}"
+        sns.publish(TopicArn=sns_topic_arn, Message=message)
+        print(f"Notification sent: {message}")
+    else:
+        print("No instances to stop.")
+    
+    return {
+        'statusCode': 200,
+        'body': 'Lambda execution completed.'
+    }
+```
+
+
+3.2.Next, we will click “Deploy” to deploy the function’s code to the Lambda service, then click “Test” to test out the function based on a test case.
+
+For “Test event action”, select “Create a new event”, then name the event. We can use the JSON code below to test our Lambda function.
+
+Click “Save” to save the Test event.
+
+![image_alt]()
+
+
+We can now test our function by clicking ‘Test”. A “success” response, along with other details from the function execution in the function logs should display in the “Executing results” tab.
+
+![image_alt]()
+
 
 
 
