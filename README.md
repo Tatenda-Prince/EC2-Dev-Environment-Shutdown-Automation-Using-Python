@@ -181,7 +181,7 @@ Select “Cron-based schedule” and use the cron expression as seen below, then
 
 4.3.Select “AWS Lambda — Invoke”, choose your Lambda function, then click “Next”.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/4f68a8cef6e7b9ae0653fafd173d97469c3a9127/img/Screenshot%202025-02-07%20173408.png)
 
 
 4.4.Continue to the “Review and create schedule”, then click “Create schedule”.
