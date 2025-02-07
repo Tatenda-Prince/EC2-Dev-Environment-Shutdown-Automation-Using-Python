@@ -50,7 +50,7 @@ Navigate to AWS Lambda in the AWS Management Console and click “Create Functio
 
 2.1.Select “Author from scratch”, name the function, then choose Python 3.7 or greater Runtime.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/6dd3cc0fad7919d180399ead0cdadbded389f569/img/Screenshot%202025-02-07%20172231.png)
 
 2.2.Under Permissions, create a new IAM role with the following permissions:
 
