@@ -5,7 +5,7 @@
 
 # Technical Architecture
 
-![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/b24f5fbf5eecf4879f2ef3b411750419d918b308/img/Screenshot%202025-02-07%20193657.png)
+![image_alt]
 
 
 ## Project Overview
