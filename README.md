@@ -264,7 +264,7 @@ if __name__ == "__main__":
 6.1.Navigate back to EventBridge and edit the Schedule created earlier. We need to make changes to the next scheduled time so we don’t have to wait until 17:45pm to verify if the Instances were stopped.
 To accomplish this effectively, change the “Schedule pattern” occurrence to “One-time schedule”, set the “Date and time” to the current date and the time to 3–5 minutes in the future to limit wait time.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/85edc2a59f384b270ef4efb2c4a8f698c1456106/img/Screenshot%202025-02-07%20173753.png)
 
 
 6.2.Verify that the instance is stopped and you receive a notification.
