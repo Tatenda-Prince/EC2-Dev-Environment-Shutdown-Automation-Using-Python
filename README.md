@@ -177,7 +177,7 @@ Name and describe (optional) your schedule and set “Schedule group” to defau
 4.2.For “Schedule pattern” select “Recurring schedule” since we want the Lambda function to execute at 7pm every working day.
 Select “Cron-based schedule” and use the cron expression as seen below, then click “Next”.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/03be25d2aa1355f5f4593d074d08ae96b62ce457/img/Screenshot%202025-02-07%20173314.png)
 
 4.3.Select “AWS Lambda — Invoke”, choose your Lambda function, then click “Next”.
 
