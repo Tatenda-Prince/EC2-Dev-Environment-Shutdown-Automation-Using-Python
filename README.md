@@ -36,7 +36,7 @@ You work at a DevOps Team at Up The Chelsea Corp and they prioritize cost optimi
 
 Create a new SNS topic (e.g., InstanceStopNotification).
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/c6e364bd496830caa7f5cf3bbbb39a8b6e90a2d3/img/Screenshot%202025-02-07%20171937.png)
 
 1.2.Subscribe your email or other endpoints to the topic to receive notifications.
 
