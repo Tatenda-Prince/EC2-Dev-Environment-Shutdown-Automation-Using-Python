@@ -94,7 +94,7 @@ json
 2.4.Head back to the Lambda’s “Create function” window. Refresh the existing roles, select the role previously created, then click “Create Function”.
 
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/235b79137302b284942be6b9b597b365a679a3f1/img/Screenshot%202025-02-07%20172248.png)
 
 
 
