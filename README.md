@@ -161,7 +161,7 @@ Click “Save” to save the Test event.
 
 We can now test our function by clicking ‘Test”. A “success” response, along with other details from the function execution in the function logs should display in the “Executing results” tab.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/f91ea8aec14b58764e746ee2a25d012a3ae83a82/img/Screenshot%202025-02-07%20172834.png)
 
 
 
