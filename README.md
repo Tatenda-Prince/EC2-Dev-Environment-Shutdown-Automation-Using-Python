@@ -171,7 +171,7 @@ Click “Save” to save the Test event.
 4.1.Navigate to EventBridge, select “EventBridge Schedule” then click “Create Rule”.
 Name and describe (optional) your schedule and set “Schedule group” to default.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/d3dfd822550845f50def8eab2e21abb64f9fb6b5/img/Screenshot%202025-02-07%20173122.png)
 
 
 4.2.For “Schedule pattern” select “Recurring schedule” since we want the Lambda function to execute at 7pm every working day.
