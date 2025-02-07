@@ -156,7 +156,7 @@ For “Test event action”, select “Create a new event”, then name the even
 
 Click “Save” to save the Test event.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/35a4d50e1e67b9b75a5b4cc5f7b84661eca8b152/img/Screenshot%202025-02-07%20172711.png)
 
 
 We can now test our function by clicking ‘Test”. A “success” response, along with other details from the function execution in the function logs should display in the “Executing results” tab.
