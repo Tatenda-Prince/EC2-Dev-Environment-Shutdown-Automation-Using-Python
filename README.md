@@ -40,7 +40,7 @@ Create a new SNS topic (e.g., InstanceStopNotification).
 
 1.2.Subscribe your email or other endpoints to the topic to receive notifications.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/984e1090cbb9e484da98f7d840499c5fb9e8c691/img/Screenshot%202025-02-07%20172117.png)
 
 
 
