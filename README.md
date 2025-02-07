@@ -61,7 +61,6 @@ Navigate to AWS Lambda in the AWS Management Console and click “Create Functio
 `sns:Publish`
 
 2.3.Click “Create policy”, then select the “JSON” table to edit the policy. Copy and paste the JSON policy below in the policy box, then click “Next:Tags”.
-
 create a role with this policy attached
 
 
@@ -106,6 +105,7 @@ Replace the default code with the following Python script:
 
 
 ```python
+
 import boto3
 
 def lambda_handler(event, context):
@@ -151,17 +151,51 @@ def lambda_handler(event, context):
 
 
 3.2.Next, we will click “Deploy” to deploy the function’s code to the Lambda service, then click “Test” to test out the function based on a test case.
-
 For “Test event action”, select “Create a new event”, then name the event. We can use the JSON code below to test our Lambda function.
 
 Click “Save” to save the Test event.
 
+
 ![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/35a4d50e1e67b9b75a5b4cc5f7b84661eca8b152/img/Screenshot%202025-02-07%20172711.png)
 
 
-We can now test our function by clicking ‘Test”. A “success” response, along with other details from the function execution in the function logs should display in the “Executing results” tab.
+
+3.3.We can now test our function by clicking ‘Test”. A “success” response, along with other details from the function execution in the function logs should display in the “Executing results” tab.
+
 
 ![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/f91ea8aec14b58764e746ee2a25d012a3ae83a82/img/Screenshot%202025-02-07%20172834.png)
+
+
+## Step 4: Create an EventBridge Rule
+
+4.1.Navigate to EventBridge, select “EventBridge Schedule” then click “Create Rule”.
+Name and describe (optional) your schedule and set “Schedule group” to default.
+
+![image_alt]()
+
+
+4.2.For “Schedule pattern” select “Recurring schedule” since we want the Lambda function to execute at 7pm every working day.
+Select “Cron-based schedule” and use the cron expression as seen below, then click “Next”.
+
+![image_alt]()
+
+4.3.Select “AWS Lambda — Invoke”, choose your Lambda function, then click “Next”.
+
+![image_alt]()
+
+
+4.4.Continue to the “Review and create schedule”, then click “Create schedule”.
+You should now be able to see the new Schedule just created in EventBridge.
+
+![image_alt]()
+
+
+Now that we’ve scheduled the execution of our Lambda function, we can proceed to Step 5 — Automating the launching of Dev EC2 Instances.
+
+
+
+
+
 
 
 
