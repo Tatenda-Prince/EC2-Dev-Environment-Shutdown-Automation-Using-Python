@@ -269,11 +269,21 @@ To accomplish this effectively, change the “Schedule pattern” occurrence to 
 ![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/85edc2a59f384b270ef4efb2c4a8f698c1456106/img/Screenshot%202025-02-07%20173753.png)
 
 
-6.2.Verify that the instance is stopped and you receive a notification.
+
+
+6.2.Here is the output all our DEV Instances were terminated only the Prod is still running.
+
+![image_alt]()
 
 
 
-![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/20dbd35f68be623c96cc13d31c6b4fcf50183e45/img/Screenshot%202025-02-07%20174638.png)
+
+
+6.3.Verify that the instance is stopped and you receive a notification.
+
+
+
+![image_alt]()
 
 
 ## Congratulations!
