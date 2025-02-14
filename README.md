@@ -283,7 +283,7 @@ To accomplish this effectively, change the “Schedule pattern” occurrence to 
 
 
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/a82075cbf115765248b1e97109091018a559db55/img/Screenshot%202025-02-14%20201854.png)
 
 
 ## Congratulations!
