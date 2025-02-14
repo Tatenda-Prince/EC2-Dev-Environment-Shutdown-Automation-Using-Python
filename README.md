@@ -69,22 +69,22 @@ create a role with this policy attached
 
 json
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "ec2:DescribeInstances",
-        "ec2:StopInstances"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "sns:Publish",
-      "Resource": "*"
-    }
-  ]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances",
+                "ec2:TerminateInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "sns:Publish",
+            "Resource": "arn:aws:sns:us-east-1:664418964175:InstanceStopNotification"
+        }
+    ]
 }
 
 ```
@@ -105,7 +105,6 @@ Replace the default code with the following Python script:
 
 
 ```python
-
 import boto3
 
 def lambda_handler(event, context):
@@ -124,29 +123,32 @@ def lambda_handler(event, context):
         ]
     )
     
-    instances_to_stop = []
+    instances_to_terminate = []
     
     for reservation in response['Reservations']:
         for instance in reservation['Instances']:
-            instances_to_stop.append(instance['InstanceId'])
+            instances_to_terminate.append(instance['InstanceId'])
     
-    if instances_to_stop:
-        # Stop the instances
-        ec2.stop_instances(InstanceIds=instances_to_stop)
-        print(f"Stopped instances: {instances_to_stop}")
+    if instances_to_terminate:
+        # Terminate the instances
+        ec2.terminate_instances(InstanceIds=instances_to_terminate)
+        print(f"Terminated instances: {instances_to_terminate}")
         
         # Send notification
-        sns_topic_arn = 'arn:aws:sns:us-east-1:664418964175:InstanceStopNotification'
-        message = f"The following instances with tag {tag_key}={tag_value} were stopped: {instances_to_stop}"
+        sns_topic_arn = 'arn:aws:sns:us-east-1:664418964175:InstanceTerminateTopic'
+        message = f"The following instances with tag {tag_key}={tag_value} were terminated: {instances_to_terminate}"
         sns.publish(TopicArn=sns_topic_arn, Message=message)
         print(f"Notification sent: {message}")
     else:
-        print("No instances to stop.")
+        print("No instances to terminate.")
     
     return {
         'statusCode': 200,
         'body': 'Lambda execution completed.'
     }
+
+    
+    
 ```
 
 
