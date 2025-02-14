@@ -273,7 +273,7 @@ To accomplish this effectively, change the “Schedule pattern” occurrence to 
 
 6.2.Here is the output all our DEV Instances were terminated only the Prod is still running.
 
-![image_alt]()
+![image_alt](https://github.com/Tatenda-Prince/EC2-Dev-Environment-Shutdown-Automation-Using-Python/blob/b3b171e8140e429dd8540e61feeec543b6751d62/img/Screenshot%202025-02-14%20195709.png)
 
 
 
